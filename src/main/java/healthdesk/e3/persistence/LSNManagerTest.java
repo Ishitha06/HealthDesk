@@ -6,6 +6,11 @@ import java.util.HashSet;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * Verifies that the LSN manager assigns unique sequence numbers
+ * when multiple simulated counters request LSNs concurrently.
+ */
+
 public class LSNManagerTest {
 
     public static void main(String[] args) throws InterruptedException {
