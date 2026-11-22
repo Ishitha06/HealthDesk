@@ -5,6 +5,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * Tests the basic WAL append functionality.
+ *
+ * Verifies PUT and DELETE operations, LSN assignment and
+ * the resulting WAL file contents.
+ */
+
 public class WALManagerTest {
 
     public static void main(String[] args) throws IOException {

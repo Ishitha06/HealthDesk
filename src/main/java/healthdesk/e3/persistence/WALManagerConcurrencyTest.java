@@ -7,6 +7,13 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * Tests concurrent WAL writes from multiple simulated counter threads.
+ *
+ * Verifies that the WAL manager serializes writes and produces
+ * records with the expected LSN ordering.
+ */
+
 public class WALManagerConcurrencyTest {
 
     public static void main(String[] args) throws Exception {
