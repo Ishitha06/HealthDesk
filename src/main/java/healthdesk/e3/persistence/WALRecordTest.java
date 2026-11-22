@@ -1,6 +1,12 @@
 
 package healthdesk.e3.persistence;
 
+/**
+ * Tests WALRecord construction and input validation.
+ *
+ * Covers valid PUT and DELETE records and rejects invalid LSN values.
+ */
+
 public class WALRecordTest {
 
     public static void main(String[] args) {
