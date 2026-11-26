@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthDesk WebSocket Test</title>
+</head>
+<body>
+<h2>HealthDesk WebSocket Test</h2>
+
+<button onclick="connect()">Connect</button>
+<button onclick="disconnect()">Disconnect</button>
+
+<br><br>
+
+<input type="text" id="messageInput" placeholder="Enter message">
+<button onclick="sendMessage()">Send</button>
+
+<h3>Server Responses</h3>
+<pre id="output"></pre>
+
+<script>
+    let socket;
+
+    function log(message) {
+        document.getElementById("output").textContent += message + "\n";
+    }
+
+    function connect() {
+        socket = new WebSocket("ws://localhost:8080");
+
+        socket.onopen = function () {
+            log("Connected to HealthDesk server.");
+        };
+
+        socket.onmessage = function (event) {
+            log("Server: " + event.data);
+        };
+
+        socket.onclose = function () {
+            log("Connection closed.");
+        };
+
+        socket.onerror = function () {
+            log("WebSocket connection error.");
+        };
+    }
+
+    function sendMessage() {
+        if (socket && socket.readyState === WebSocket.OPEN) {
+            const message = document.getElementById("messageInput").value;
+            socket.send(message);
+            log("Client: " + message);
+        } else {
+            log("Not connected to server.");
+        }
+    }
+
+    function disconnect() {
+        if (socket) {
+            socket.close();
+        }
+    }
+</script>
+</body>
+</html>
